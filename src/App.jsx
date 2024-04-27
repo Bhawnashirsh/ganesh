@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect,useState } from 'react'
 import { RiMenuLine } from "react-icons/ri";
 import { IoHomeOutline } from "react-icons/io5";
 import { FiBook } from "react-icons/fi";
@@ -7,11 +7,28 @@ import { LuLogOut } from "react-icons/lu";
 
 function App() {
   const [sidebarVisible, setSidebarVisible] = useState(true);
+
+  const [isMobile, setIsMobile] = useState(false);
+
   const toggleSidebar = () => {
-    setSidebarVisible(!sidebarVisible);
+    if (window.innerWidth <= 991) {
+      setSidebarVisible(!sidebarVisible);
+    }
   };
 
-
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 991);
+      if (window.innerWidth > 991) {
+        setSidebarVisible(true); // Show sidebar by default on larger screens
+      } else {
+        setSidebarVisible(false); // Hide sidebar by default on smaller screens
+      }
+    };
+    handleResize(); // Check on initial render
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
   return (
     <>    
       <header>
@@ -34,7 +51,7 @@ function App() {
     </header>
      <main className='main-content'>
         { <Menu />}
-        {sidebarVisible && <Sidebar />}
+        {(sidebarVisible || !isMobile) && <Sidebar />}
       </main>
          
     </>
