@@ -1,8 +1,9 @@
 import { useState } from 'react'
-// import Header from './Components/Header'
-// import Sidebar from './Components/Sidebar'
-import { IoMenuSharp } from "react-icons/io5";
 import { RiMenuLine } from "react-icons/ri";
+import { IoHomeOutline } from "react-icons/io5";
+import { FiBook } from "react-icons/fi";
+import { LuLogIn } from "react-icons/lu";
+import { LuLogOut } from "react-icons/lu";
 
 function App() {
   const [sidebarVisible, setSidebarVisible] = useState(true);
@@ -25,8 +26,8 @@ function App() {
           />
         </div>
         <div className="buttons ">
-          <a href="">Login</a>
-          <a href="">Signup</a>
+          <a href="" className='btn-auth'>Login</a>
+          <a href="" className='btn-auth'>Signup</a>
           <div onClick={toggleSidebar} className='menu-bar'><RiMenuLine /></div>
         </div>
       </div>
@@ -51,9 +52,11 @@ function Sidebar( { toggleSidebar }) {
   return (
     <aside className='sidebar'>
        <div>
-        <ul>
-          <li><a href="">Home</a></li>
-          <li><a href="">Courses</a></li>
+        <ul className='sidebar-ul'>
+          <li><a href="" className='links'><IoHomeOutline /> Home</a></li>
+          <li><a href="" className='links'><FiBook />Courses</a></li>
+          <li><a href="" className='links loginsignup'><LuLogIn /> Login</a></li>
+          <li><a href="" className='links loginsignup'><LuLogOut />Sign Up</a></li>
         </ul>
       </div>
     </aside>

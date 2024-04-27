@@ -51,7 +51,24 @@ header{
     margin-left: 315px;
     padding: 24px;
 }
-
+.sidebar-ul{
+    padding: 10px 20px;
+    list-style: none;
+}
+.links svg{
+    padding-right: 12px;
+}
+.links{
+    text-decoration: none;
+    margin-bottom: 15px;
+    display: flex;
+    background: #dcdcdc;
+    padding: 12px;
+    border-radius: 5px;
+    color: #000;
+    align-items: center;
+    font-size: 17px;
+}
 @media(min-width:992px){
 .menu-bar{
     display: none;
@@ -59,13 +76,22 @@ header{
 .sidebar{
     display: block;
 }
-
+.loginsignup{
+ display: none;       
+}
 }
 @media(max-width:991.98px){
     .main-area{
         margin-left: 0px;
     }
-    .sidebar{
+    /* .sidebar{
         display: none;
+    } */
+    .loginsignup{
+        display: block;
+    }
+
+    .btn-auth{
+        display: none!important;
     }
 }
